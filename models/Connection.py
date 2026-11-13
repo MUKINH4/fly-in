@@ -1,12 +1,12 @@
-from .Metadata import ConnMetadata
-from .Zone import Zone
+from .metadata import ConnMetadata
+from .zone import Zone
 
 
 class Connection:
     def __init__(self,
-                 first_zone: Zone,
-                 second_zone: Zone,
+                 zone_a: Zone,
+                 zone_b: Zone,
                  metadata: ConnMetadata):
-        self.first_zone = first_zone
-        self.second_zone = second_zone
+        self.zone_a = zone_a
+        self.zone_b = zone_b
         self.metadata = metadata
