@@ -1,18 +1,16 @@
-from enums import ZoneDefinitionEnum
-from .models import ZoneMetadata
+from enums import ZoneDefinitionsEnum
+from .Metadata import ZoneMetadata
 
 
 class Zone:
-	def __init__(self,
-                 hub: ZoneDefinitionEnum,
+    def __init__(self,
+                 hub: ZoneDefinitionsEnum,
                  name: str,
-                 loc_x,
-                 loc_y,
-                 metadata: Metadata):
-		self.hub = hub
+                 loc_x: int,
+                 loc_y: int,
+                 metadata: ZoneMetadata):
+        self.hub = hub
         self.name = name
         self.loc_x = loc_x
         self.loc_y = loc_y
         self.metadata = metadata
-		
-		

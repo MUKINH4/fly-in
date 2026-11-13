@@ -1,4 +1,6 @@
-from .models import ConnMetadata
+from .Metadata import ConnMetadata
+from .Zone import Zone
+
 
 class Connection:
     def __init__(self,
@@ -8,4 +10,3 @@ class Connection:
         self.first_zone = first_zone
         self.second_zone = second_zone
         self.metadata = metadata
-
