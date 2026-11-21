@@ -1,5 +1,6 @@
 from models import Map, Zone
 from typing import List
+from exceptions import ParserException
 
 
 class Config:
@@ -7,7 +8,9 @@ class Config:
         self.filepath = filepath
         self.zones: List[Zone] = []
         self.nb_drones: int = 1
+
     def parser(self):
+        new_map = Map()
         try:
             with open(self.filepath, "r") as f:
                 for i, line in enumerate(f):
@@ -18,7 +21,11 @@ class Config:
                         continue
                     if line.startswith("nb_drones"):
                         nb_drones = int(line.split(":")[1].strip())
-                        print(nb_drones)
-
+                        self.nb_drones = nb_drones
+                    else:
+                        raise ParserException("The first line must be 'nb_drones'")
+            new_map.add_map(zones, connections, nb_drones)
+        except ParserException as e:
+            return e
         except Exception as e:
             return e
