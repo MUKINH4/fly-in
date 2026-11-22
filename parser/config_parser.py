@@ -1,6 +1,6 @@
 from models import Map, Zone
 from typing import List
-from exceptions import ParserException
+from exceptions.exceptions import ParserException
 
 
 class Config:
@@ -23,9 +23,9 @@ class Config:
                         nb_drones = int(line.split(":")[1].strip())
                         self.nb_drones = nb_drones
                     else:
-                        raise ParserException("The first line must be 'nb_drones'")
-            new_map.add_map(zones, connections, nb_drones)
+                        raise ParserException("The first line must be 'nb_drones'", line=i+1)
+            # new_map.add_map(zones, connections, nb_drones)
         except ParserException as e:
-            return e
+            print(f"ParserException: [Line {e.line}] {e.message}")
         except Exception as e:
             return e
